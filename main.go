@@ -4,6 +4,9 @@ import (
 	"bytes"
 	"crypto/sha256"
 	"fmt"
+	"strconv"
+
+	"github.com/pbtrad/goblockchain/blockchain"
 )
 
 func main() {
@@ -17,6 +20,10 @@ func main() {
 		fmt.Printf("Previous hash: %x\n", block.PrevHash)
 		fmt.Printf("data: %s\n", block.Data)
 		fmt.Printf("hash: %x\n", block.Hash)
+
+		pow := blockchain.NewProofOfWork(&blockchain.Block{})
+		fmt.Printf("Pow: %s\n", strconv.FormatBool(pow.Validate()))
+		fmt.Println()
 	}
 }
 
